@@ -11,7 +11,7 @@ const GeneratePage = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      if (user) {
+      if (!user) {
         router.push("/");
       }
     }
