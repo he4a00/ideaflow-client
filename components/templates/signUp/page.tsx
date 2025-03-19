@@ -16,13 +16,13 @@ export default function SignUpTemplate() {
     fullName,
   });
 
-  const router = useRouter()
+  const router = useRouter();
 
   const { user } = useUserContext();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      if (!user) {
+      if (user) {
         router.push("/");
       }
     }
