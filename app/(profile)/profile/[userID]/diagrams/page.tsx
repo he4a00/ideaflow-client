@@ -17,7 +17,8 @@ import { useGetUserDiagrams } from "@/app/services/hooks/Diagram/useDiagram";
 import { useParams } from "next/navigation";
 
 const UserDiagrams = () => {
-  const { id: userID } = useParams();
+  const { userID } = useParams();
+
   const {
     data: userDiagrams,
     isLoading,
