@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useUserContext } from "@/app/context/UserContext";
@@ -10,18 +10,20 @@ export default function LoginTemplate() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  const { login }: any = useUserContext();
+  const { login, user }: any = useUserContext();
   const router = useRouter();
-  const user = localStorage.getItem("user");
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await login(email, password);
   };
 
-  if (user) {
-    router.push("/");
-  }
-
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (!user) {
+        router.push("/");
+      }
+    }
+  }, [router, user]);
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-50 p-4">
       <div className="w-full max-w-md rounded-lg bg-white shadow-sm">

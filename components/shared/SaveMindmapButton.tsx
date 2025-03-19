@@ -17,7 +17,7 @@ const SaveMindmapButton = ({ title, contentjson, isPublic }: TSave_Mindmap) => {
       onClick={() => saveMindmap()}
       disabled={isPending}
     >
-      {text || "Save"}
+      Save
     </Button>
   );
 };

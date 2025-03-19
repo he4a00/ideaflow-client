@@ -1,4 +1,5 @@
-import LoginTemplate from '@/components/templates/signIn';
+"use client"
+import LoginTemplate from '@/components/templates/signIn/page';
 
 const Login = () => {
   return (

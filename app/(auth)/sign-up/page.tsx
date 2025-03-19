@@ -1,4 +1,6 @@
-import SignUpTemplate from '@/components/templates/signUp';
+"use client";
+
+import SignUpTemplate from "@/components/templates/signUp/page";
 
 const Register = () => {
   return (

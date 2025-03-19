@@ -1,15 +1,17 @@
+import { Suspense } from "react";
 import MindMapScreen from "@/components/shared/MindMapScreen";
 import { ReactFlowProvider } from "@xyflow/react";
-import React from "react";
 
-const page = () => {
+const Page = () => {
   return (
     <ReactFlowProvider>
       <div className="h-screen">
-        <MindMapScreen />
+        <Suspense fallback={<div>Loading...</div>}>
+          <MindMapScreen />
+        </Suspense>
       </div>
     </ReactFlowProvider>
   );
 };
 
-export default page;
+export default Page;

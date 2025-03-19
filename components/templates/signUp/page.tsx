@@ -1,8 +1,10 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { useSignup } from '@/app/services/hooks/useSignup';
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useSignup } from "@/app/services/hooks/useSignup";
+import { useUserContext } from "@/app/context/UserContext";
+import { useRouter } from "next/navigation";
 
 export default function SignUpTemplate() {
   const [fullName, setFullName] = useState("");
@@ -13,7 +15,18 @@ export default function SignUpTemplate() {
     password,
     fullName,
   });
-  
+
+  const router = useRouter()
+
+  const { user } = useUserContext();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (!user) {
+        router.push("/");
+      }
+    }
+  }, [router, user]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -165,7 +178,7 @@ export default function SignUpTemplate() {
 
         <div className="flex justify-center pb-8">
           <p className="text-sm text-center">
-            Already have an account?{' '}
+            Already have an account?{" "}
             <Link href="/sign-in" className="text-indigo-600 hover:underline">
               Sign in
             </Link>

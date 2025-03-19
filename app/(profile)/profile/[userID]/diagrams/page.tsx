@@ -14,13 +14,15 @@ import {
 import FlowPreview from "@/components/templates/flowPreview";
 import DeleteButton from "@/components/shared/DeleteButton";
 import { useGetUserDiagrams } from "@/app/services/hooks/Diagram/useDiagram";
+import { useParams } from "next/navigation";
 
-const UserDiagrams = ({ params }: { params: { userID: string } }) => {
+const UserDiagrams = () => {
+  const { id: userID } = useParams();
   const {
     data: userDiagrams,
     isLoading,
     isFetching,
-  } = useGetUserDiagrams({ userID: params.userID });
+  } = useGetUserDiagrams({ userID: userID as string });
 
   if (isLoading || isFetching) {
     return (
