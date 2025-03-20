@@ -10,15 +10,19 @@ const GeneratePage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (!user) {
-        router.push("/");
-      }
+    if (user === null) {
+      router.push("/");
     }
   }, [router, user]);
+
   if (user === undefined) {
     return <p>Loading...</p>;
   }
+
+  if (user === null) {
+    return null;
+  }
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-4 md:p-24">
       <MindMapGenerator />
