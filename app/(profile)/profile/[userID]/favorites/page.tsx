@@ -14,13 +14,13 @@ const UserFav = () => {
 
   console.log(error?.message);
 
-  if (isLoading) {
-    return (
-      <div className="w-full h-full flex items-center justify-center">
-        Loading...
-      </div>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <div className="w-full h-full flex items-center justify-center">
+  //       Loading...
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="container mx-auto p-6 flex flex-col gap-6">

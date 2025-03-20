@@ -16,13 +16,13 @@ const UserDiagrams = () => {
     userID: userID as string,
   });
 
-  if (isLoading) {
-    return (
-      <div className="w-full h-full flex items-center justify-center">
-        Loading...
-      </div>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <div className="w-full h-full flex items-center justify-center">
+  //       Loading...
+  //     </div>
+  //   );
+  // }
 
 
   return (
