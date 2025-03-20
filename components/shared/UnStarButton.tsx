@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "../ui/button";
 import { useUnStarDiagram } from "@/app/services/hooks/Diagram/useDiagram";
-import { X } from "lucide-react";
+import { Heart } from "lucide-react";
 
 interface StarButtonProps {
   id: string;
@@ -17,7 +17,7 @@ const UnStarButton = ({ id }: StarButtonProps) => {
       onClick={() => unStarDiagram()}
       disabled={unStarLoading}
     >
-      <X />
+      <Heart />
     </Button>
   );
 };
