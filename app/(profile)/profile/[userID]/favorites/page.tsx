@@ -22,14 +22,6 @@ const UserFav = () => {
     );
   }
 
-  if (!favourites?.result?.items || favourites.result.items.length === 0) {
-    return (
-      <div className="w-full h-full flex items-center justify-center">
-        No diagram found
-      </div>
-    );
-  }
-
   return (
     <div className="container mx-auto p-6 flex flex-col gap-6">
       <div className="flex sm:items-center items-start flex-col sm:flex-row gap-2 sm:gap-0 justify-between">
@@ -60,45 +52,51 @@ const UserFav = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {favourites?.result?.items?.map((diagram: TDiagram) => (
-          <div
-            key={diagram.diagramID}
-            className="border rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow relative"
-          >
-            <div className="absolute top-2 right-3 z-50">
-              <UnStarButton id={diagram.favouriteID || ""} />
-            </div>
+      {favourites?.result?.items?.length === 0 ? (
+        <div className="w-full h-full flex items-center justify-center">
+          No favourite diagrams found
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {favourites.result.items.map((diagram: TDiagram) => (
+            <div
+              key={diagram.diagramID}
+              className="border rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow relative"
+            >
+              <div className="absolute top-2 right-3 z-50">
+                <UnStarButton id={diagram.favouriteID || ""} />
+              </div>
 
-            <div className="relative h-40 z-10">
-              {diagram.contentJson && (
-                <FlowPreview contentJson={diagram.contentJson} />
-              )}
-            </div>
-            <div className="p-4 flex flex-col gap-2">
-              <Link
-                href={`/templates/${diagram.diagramID}`}
-                className="font-medium text-lg hover:underline"
-              >
-                {diagram.title}
-              </Link>
-              <div className="flex justify-between text-sm text-gray-500">
-                <div className="flex flex-col gap-2">
-                  <span>
-                    Last edited{" "}
-                    {new Date(diagram.updatedAt).toLocaleDateString()}
-                  </span>
-                </div>
-                <div className="flex items-end flex-col md:flex-row gap-2">
-                  {diagram.isPublic === true && <Globe className="h-4 w-4" />}
-                  {diagram.isPublic === false && <Lock className="h-4 w-4" />}
-                  <span>{diagram.isPublic ? "Public" : "Private"}</span>
+              <div className="relative h-40 z-10">
+                {diagram.contentJson && (
+                  <FlowPreview contentJson={diagram.contentJson} />
+                )}
+              </div>
+              <div className="p-4 flex flex-col gap-2">
+                <Link
+                  href={`/templates/${diagram.diagramID}`}
+                  className="font-medium text-lg hover:underline"
+                >
+                  {diagram.title}
+                </Link>
+                <div className="flex justify-between text-sm text-gray-500">
+                  <div className="flex flex-col gap-2">
+                    <span>
+                      Last edited{" "}
+                      {new Date(diagram.updatedAt).toLocaleDateString()}
+                    </span>
+                  </div>
+                  <div className="flex items-end flex-col md:flex-row gap-2">
+                    {diagram.isPublic === true && <Globe className="h-4 w-4" />}
+                    {diagram.isPublic === false && <Lock className="h-4 w-4" />}
+                    <span>{diagram.isPublic ? "Public" : "Private"}</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
