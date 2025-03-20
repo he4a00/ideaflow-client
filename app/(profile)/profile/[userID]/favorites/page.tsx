@@ -10,16 +10,11 @@ import { useGetUserFavDiagrams } from "@/app/services/hooks/Diagram/useDiagram";
 import UnStarButton from "@/components/shared/UnStarButton";
 
 const UserFav = () => {
-  const {
-    data: favourites,
-    isLoading,
-    isFetching,
-    error,
-  } = useGetUserFavDiagrams();
+  const { data: favourites, isLoading, error } = useGetUserFavDiagrams();
 
   console.log(error?.message);
 
-  if (isLoading || isFetching) {
+  if (isLoading) {
     return (
       <div className="w-full h-full flex items-center justify-center">
         Loading...
@@ -29,7 +24,7 @@ const UserFav = () => {
   if (error) {
     return (
       <div className="w-full h-full flex items-center justify-center">
-        Failed to fetch favorites
+        No diagram found
       </div>
     );
   }

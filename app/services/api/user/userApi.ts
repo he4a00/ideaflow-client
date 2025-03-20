@@ -1,4 +1,4 @@
-import { TSignIn, TSignUp } from "@/constants/types";
+import { TSignUp } from "@/constants/types";
 import api from "@/lib/api";
 
 export const Register = async ({ fullName, email, password }: TSignUp) => {
@@ -9,15 +9,6 @@ export const Register = async ({ fullName, email, password }: TSignUp) => {
   });
   return data;
 };
-
-export const Login = async ({ email, password }: TSignIn) => {
-  const { data } = await api.post("/Account/login", {
-    email,
-    password,
-  });
-  return data;
-};
-
 
 export const forgetPassword = async ({ email }: { email: string }) => {
   const { data } = await api.post("/Account/forgotPassword", { email });
@@ -51,4 +42,3 @@ export const resetPassword = async ({
   });
   return data;
 };
-

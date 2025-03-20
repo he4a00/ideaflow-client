@@ -19,13 +19,11 @@ import { useParams } from "next/navigation";
 const UserDiagrams = () => {
   const { userID } = useParams();
 
-  const {
-    data: userDiagrams,
-    isLoading,
-    isFetching,
-  } = useGetUserDiagrams({ userID: userID as string });
+  const { data: userDiagrams, isLoading } = useGetUserDiagrams({
+    userID: userID as string,
+  });
 
-  if (isLoading || isFetching) {
+  if (isLoading) {
     return (
       <div className="w-full h-full flex items-center justify-center">
         Loading...
@@ -77,30 +75,6 @@ const UserDiagrams = () => {
             key={diagram.diagramID}
             className="border rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow relative"
           >
-            <div className="absolute top-2 right-3 z-50">
-              <DropdownMenu>
-                <DropdownMenuTrigger
-                  asChild
-                  className="cursor-pointer outline-none"
-                >
-                  <button>
-                    <Ellipsis
-                      size={24}
-                      className=" text-[#4F46E5] bg-[#4F46E5]/20 rounded-full p-1"
-                    />
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  align="end"
-                  className="bg-white shadow-lg rounded-md p-2"
-                >
-                  <DropdownMenuItem className="cursor-pointer outline-none">
-                    <DeleteButton diagramID={diagram.diagramID} />
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-
             <div className="relative h-40 z-10">
               {diagram.contentJson && (
                 <FlowPreview contentJson={diagram.contentJson} />
