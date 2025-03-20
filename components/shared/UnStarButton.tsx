@@ -15,7 +15,7 @@ const UnStarButton = ({ id }: StarButtonProps) => {
       onClick={() => unStarDiagram()}
       disabled={unStarLoading}
     >
-      <Heart />
+      <Heart fill="red" />
     </button>
   );
 };
