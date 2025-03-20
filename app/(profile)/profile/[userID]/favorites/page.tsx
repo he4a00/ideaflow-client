@@ -21,13 +21,6 @@ const UserFav = () => {
       </div>
     );
   }
-  if (error) {
-    return (
-      <div className="w-full h-full flex items-center justify-center">
-        No diagram found
-      </div>
-    );
-  }
 
   if (!favourites?.result?.items || favourites.result.items.length === 0) {
     return (
