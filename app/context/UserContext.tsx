@@ -41,7 +41,7 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
       }
     } catch (error) {
       console.error("Login Error:", error);
-      toast("Error");
+      toast("Email or Password is incorrect");
     } finally {
       setLoading(false);
     }
