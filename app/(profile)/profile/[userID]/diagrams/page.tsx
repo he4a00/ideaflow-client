@@ -12,17 +12,17 @@ import { useParams } from "next/navigation";
 const UserDiagrams = () => {
   const { userID } = useParams();
 
-  const { data: userDiagrams } = useGetUserDiagrams({
+  const { data: userDiagrams, isLoading } = useGetUserDiagrams({
     userID: userID as string,
   });
 
-  // if (isLoading) {
-  //   return (
-  //     <div className="w-full h-full flex items-center justify-center">
-  //       Loading...
-  //     </div>
-  //   );
-  // }
+  if (isLoading) {
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        Loading...
+      </div>
+    );
+  }
 
 
   return (
