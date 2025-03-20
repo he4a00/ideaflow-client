@@ -12,7 +12,7 @@ import { useParams } from "next/navigation";
 const UserDiagrams = () => {
   const { userID } = useParams();
 
-  const { data: userDiagrams, isLoading } = useGetUserDiagrams({
+  const { data: userDiagrams } = useGetUserDiagrams({
     userID: userID as string,
   });
 

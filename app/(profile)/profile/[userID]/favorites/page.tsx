@@ -10,7 +10,7 @@ import { useGetUserFavDiagrams } from "@/app/services/hooks/Diagram/useDiagram";
 import UnStarButton from "@/components/shared/UnStarButton";
 
 const UserFav = () => {
-  const { data: favourites, isLoading, error } = useGetUserFavDiagrams();
+  const { data: favourites, error } = useGetUserFavDiagrams();
 
   console.log(error?.message);
 
