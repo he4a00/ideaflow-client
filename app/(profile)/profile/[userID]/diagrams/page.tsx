@@ -16,14 +16,6 @@ const UserDiagrams = () => {
     userID: userID as string,
   });
 
-  if (isLoading) {
-    return (
-      <div className="w-full h-full flex items-center justify-center">
-        Loading...
-      </div>
-    );
-  }
-
 
   return (
     <div className="container mx-auto p-6 flex flex-col gap-6">
@@ -55,7 +47,11 @@ const UserDiagrams = () => {
         </div>
       </div>
 
-      {userDiagrams.result.items.length === 0 ? (
+      {isLoading ? (
+        <div className="w-full h-full flex items-center justify-center">
+          Loading...
+        </div>
+      ) : userDiagrams.result.items.length === 0 ? (
         <div className="w-full h-full flex items-center justify-center">
           No diagram found
         </div>

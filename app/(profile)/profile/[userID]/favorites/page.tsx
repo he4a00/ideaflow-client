@@ -14,13 +14,7 @@ const UserFav = () => {
 
   console.log(error?.message);
 
-  if (isLoading) {
-    return (
-      <div className="w-full h-full flex items-center justify-center">
-        Loading...
-      </div>
-    );
-  }
+ 
 
   return (
     <div className="container mx-auto p-6 flex flex-col gap-6">
@@ -52,7 +46,11 @@ const UserFav = () => {
         </div>
       </div>
 
-      {favourites?.result?.items?.length === 0 ? (
+      {isLoading ? (
+        <div className="w-full h-full flex items-center justify-center">
+          Loading...
+        </div>
+      ) : favourites?.result?.items?.length === 0 ? (
         <div className="w-full h-full flex items-center justify-center">
           No favourite diagrams found
         </div>
