@@ -77,22 +77,6 @@ export function Navbar() {
                 Templates
               </Link>
             </li>
-            <li>
-              <Link
-                href="/examples"
-                className="text-gray-700 hover:text-primary"
-              >
-                Examples
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/pricing"
-                className="text-gray-700 hover:text-primary"
-              >
-                Pricing
-              </Link>
-            </li>
           </ul>
         </nav>
 
@@ -184,20 +168,7 @@ export function Navbar() {
           >
             Templates
           </Link>
-          <Link
-            href="/examples"
-            className="text-gray-700 hover:text-primary"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Examples
-          </Link>
-          <Link
-            href="/pricing"
-            className="text-gray-700 hover:text-primary"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Pricing
-          </Link>
+
           <div className="flex flex-col space-y-2 pt-4">
             {loggedIn ? (
               <>
