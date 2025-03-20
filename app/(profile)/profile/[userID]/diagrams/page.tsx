@@ -1,18 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Ellipsis, Globe, Lock } from "lucide-react";
+import { Globe, Lock } from "lucide-react";
 import Link from "next/link";
 import { TDiagram } from "@/constants/types";
 
-import {
-  DropdownMenu,
-  DropdownMenuItem,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import FlowPreview from "@/components/templates/flowPreview";
-import DeleteButton from "@/components/shared/DeleteButton";
 import { useGetUserDiagrams } from "@/app/services/hooks/Diagram/useDiagram";
 import { useParams } from "next/navigation";
 
